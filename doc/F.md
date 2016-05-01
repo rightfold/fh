@@ -1,5 +1,7 @@
 # FH\F
 
+Functions that operate on functions.
+
 ## Static methods
 
 <dl>
