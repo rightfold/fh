@@ -12,6 +12,18 @@ final class Option<+T> {
         return new Option(true, $x);
     }
 
+    public function option<TR>(TR $onNone, (function(T): TR) $onSome): TR {
+        return $this->optionL(() ==> $onNone, $onSome);
+    }
+
+    public function optionL<TR>((function(): TR) $onNone, (function(T): TR) $onSome): TR {
+        if ($this->present) {
+            return $onSome($this->value);
+        } else {
+            return $onNone();
+        }
+    }
+
     public function map<TM>((function(T): TM) $f): Option<TM> {
         if ($this->present) {
             return Option::some($f($this->value));
