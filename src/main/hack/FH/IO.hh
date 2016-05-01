@@ -4,6 +4,10 @@ namespace FH;
 final class IO<+T> {
     public function __construct(private (function(): T) $action) { }
 
+    public static function pure(T $x): IO<T> {
+        return new IO(function() use($x) { return $x; });
+    }
+
     public function unsafePerform(): T {
         return call_user_func($this->action);
     }
