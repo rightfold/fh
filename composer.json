@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "FH\\": ["build/main/hack/FH/", "build/test/hack/FH/"]
+        }
+    },
+    "require": { },
+    "require-dev": {
+        "phpunit/phpunit": "5.0.*"
+    }
+}
