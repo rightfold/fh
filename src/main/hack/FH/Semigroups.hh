@@ -15,4 +15,16 @@ final class Semigroups {
     public static function intMul(): Semigroup<int> {
         return Monoids::intMul();
     }
+
+    public static function stringConcat(): Semigroup<string> {
+        return Monoids::stringConcat();
+    }
+
+    public static function arrayConcat<T>(): Semigroup<array<T>> {
+        return Monoids::arrayConcat();
+    }
+
+    public static function vectorConcat<T>(): Semigroup<Vector<T>> {
+        return Monoids::vectorConcat();
+    }
 }

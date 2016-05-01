@@ -38,4 +38,16 @@ final class Monoids {
     public static function intMul(): Monoid<int> {
         return self::make(($a, $b) ==> $a * $b, 1);
     }
+
+    public static function stringConcat(): Monoid<string> {
+        return self::make(($a, $b) ==> $a . $b, '');
+    }
+
+    public static function arrayConcat<T>(): Monoid<array<T>> {
+        return self::make(($a, $b) ==> $a + $b, []);
+    }
+
+    public static function vectorConcat<T>(): Monoid<Vector<T>> {
+        return self::make(($a, $b) ==> $a->concat($b), Vector{});
+    }
 }
