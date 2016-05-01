@@ -24,7 +24,7 @@ final class Semigroups {
         return Monoids::arrayConcat();
     }
 
-    public static function vectorConcat<T>(): Semigroup<Vector<T>> {
+    public static function vectorConcat<T>(): Semigroup<ImmVector<T>> {
         return Monoids::vectorConcat();
     }
 }

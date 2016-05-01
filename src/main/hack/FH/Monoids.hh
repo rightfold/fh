@@ -44,10 +44,10 @@ final class Monoids {
     }
 
     public static function arrayConcat<T>(): Monoid<array<T>> {
-        return self::make(($a, $b) ==> $a + $b, []);
+        return self::make(function($a, $b) { return array_merge($a, $b); }, []);
     }
 
-    public static function vectorConcat<T>(): Monoid<Vector<T>> {
-        return self::make(($a, $b) ==> $a->concat($b), Vector{});
+    public static function vectorConcat<T>(): Monoid<ImmVector<T>> {
+        return self::make(($a, $b) ==> $a->concat($b), ImmVector{});
     }
 }
