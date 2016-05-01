@@ -17,5 +17,5 @@ functions that take constants directly are not. For example:
         public function optionL<TR>((function(): TR) $onNone, (function(T): TR) $onSome): TR { ... }
     }
 
-These functions exist so you can prevent the unnecessary evaluation of resource-
-heavy computations.
+These functions exist so you can prevent the unnecessary evaluation of
+resource-heavy computations.
