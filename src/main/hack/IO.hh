@@ -1,7 +1,7 @@
 <?hh // strict
 namespace FH;
 
-final class IO<T> {
+final class IO<+T> {
     public function __construct(private (function(): T) $action) { }
 
     public function unsafePerform(): T {
