@@ -18,8 +18,8 @@ sub convert {
         }
         $prefix .= $stmt;
         if ($n < @stmts - 1) {
-            $prefix .= '->bind(function(' . $var . ') { return ';
-            $suffix .= '; })';
+            $prefix .= '->bind(' . $var . ' ==> ';
+            $suffix .= ')';
         }
         ++$n;
     }

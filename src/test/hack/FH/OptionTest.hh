@@ -1,4 +1,7 @@
-<?hh // strict
+<?hh // partial
+// This file is in partial mode due to a bug in h2tp:
+// https://github.com/facebook/hhvm/issues/7029#issuecomment-216323393
+
 namespace FH;
 use PHPUnit_Framework_TestCase;
 
@@ -22,7 +25,7 @@ class OptionTest extends PHPUnit_Framework_TestCase {
         $this->assertSame(1, steps {
             $x <- Option::none();
             $y <- Option::none();
-            Option::some($y);
+            Option::some($x);
         }->option(1, F::id()));
         $this->assertSame(1, steps {
             $x <- Option::none();
