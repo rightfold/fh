@@ -24,6 +24,14 @@ final class Option<+T> {
         }
     }
 
+    public function nullable(): ?T {
+        if ($this->present) {
+            return $this->value;
+        } else {
+            return null;
+        }
+    }
+
     public function map<TM>((function(T): TM) $f): Option<TM> {
         if ($this->present) {
             return Option::some($f($this->value));
