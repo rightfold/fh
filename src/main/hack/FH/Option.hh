@@ -12,6 +12,14 @@ final class Option<+T> {
         return new Option(true, $x);
     }
 
+    public static function make(?T $x): Option<T> {
+        if ($x === null) {
+            return Option::none();
+        } else {
+            return Option::some($x);
+        }
+    }
+
     public function option<TR>(TR $onNone, (function(T): TR) $onSome): TR {
         return $this->optionL(() ==> $onNone, $onSome);
     }
