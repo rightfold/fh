@@ -19,9 +19,25 @@ class OptionTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testBind(): void {
-        $this->assertSame(1, Option::none() ->bind(function($x) { return Option::none(); })      ->option(1, F::id()));
-        $this->assertSame(1, Option::none() ->bind(function($x) { return Option::some($x + 1); })->option(1, F::id()));
-        $this->assertSame(1, Option::some(2)->bind(function($x) { return Option::none(); })      ->option(1, F::id()));
-        $this->assertSame(3, Option::some(2)->bind(function($x) { return Option::some($x + 1); })->option(1, F::id()));
+        $this->assertSame(1, steps {
+            $x <- Option::none();
+            $y <- Option::none();
+            Option::some($y);
+        }->option(1, F::id()));
+        $this->assertSame(1, steps {
+            $x <- Option::none();
+            $y <- Option::some($x + 1);
+            Option::some($y);
+        }->option(1, F::id()));
+        $this->assertSame(1, steps {
+            $x <- Option::some(2);
+            $y <- Option::none();
+            Option::some($y);
+        }->option(1, F::id()));
+        $this->assertSame(3, steps {
+            $x <- Option::some(2);
+            $y <- Option::some($x + 1);
+            Option::some($y);
+        }->option(1, F::id()));
     }
 }

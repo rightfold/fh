@@ -1,10 +1,25 @@
 #!/bin/bash -e
 
 rm -rf build
-mkdir -p build/{main,test}
-hh_client
-h2tp src/main/hack build/main/hack
-h2tp src/test/hack build/test/hack
+
+mkdir -p build/{main,test,intermediate/{main,test}}
+
+(
+    cd src
+    for f in $(find . -name '*.hh' -o -name '*.hhi'); do
+        mkdir -p "../build/intermediate/$(dirname "$f")"
+        cat "$f" | ../tools/steps.pl > "../build/intermediate/$f"
+    done
+)
+
+(
+    cd build/intermediate
+    touch .hhconfig
+    hh_client
+    h2tp main/hack ../main/hack
+    h2tp test/hack ../test/hack
+)
+
 if [ -e src/main/php ]; then cp -R src/main/php build/main/php; fi
 if [ -e src/test/php ]; then cp -R src/test/php build/test/php; fi
 vendor/bin/phpunit --bootstrap build/main/php/bootstrap.php build/test
