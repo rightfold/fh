@@ -16,6 +16,12 @@ final class Eqs {
         return new Eqs_Make($eq);
     }
 
+    public static function contramap<TI, TO>(Eq<TO> $eq, (function(TI): TO) $f): Eq<TI> {
+        return self::make(function($a, $b) use($eq, $f) {
+            return $eq->eq($f($a), $f($b));
+        });
+    }
+
     public static function intEq(): Eq<int> {
         return self::make(($a, $b) ==> $a === $b);
     }

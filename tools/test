@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-rm -rf build
+rm -rf build/{main,test}
 
 mkdir -p build/{main,test,intermediate/{main,test}}
 

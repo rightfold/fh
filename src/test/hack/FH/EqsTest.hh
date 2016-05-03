@@ -16,4 +16,11 @@ class EqsTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue (Eqs::vectorEq(Eqs::intEq())->eq(ImmVector{1, 2, 3}, ImmVector{1, 2, 3}));
         $this->assertFalse(Eqs::vectorEq(Eqs::intEq())->eq(ImmVector{1, 2, 3}, ImmVector{2, 3, 4}));
     }
+
+    public function testContramap(): void {
+        $eq = Eqs::contramap(Eqs::intEq(), (string $x) ==> (int)$x);
+        $this->assertTrue($eq->eq('1', '1'));
+        $this->assertTrue($eq->eq('1', '01'));
+        $this->assertTrue(!$eq->eq('1', '2'));
+    }
 }
