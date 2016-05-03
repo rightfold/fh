@@ -8,6 +8,9 @@ Equality comparers.
 <dt><code>make&lt;T>((function(T, T): bool) $eq): Eq&lt;T></code></dt>
 <dd>Return an equality comparer from a function.</dd>
 
+<dt><code>contramap&lt;TI, TO>(Eq&lt;TO> $eq, (function(TI): TO) $f): Eq&lt;TI></code></dt>
+<dd>Return a new equality comparer that first transforms its input.</dd>
+
 <dt><code>intEq(): Eq&lt;int></code></dt>
 <dd><!-- TODO: document --></dd>
 
