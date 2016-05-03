@@ -1,4 +1,4 @@
-# `FH\Awkward<+TError, +TOk>`
+# Final class `FH\Awkward<+TError, +TOk>`
 
 Potentially erroneous values. Use this instead of exceptions. Also called
 `Either` or `\/` in other libraries.

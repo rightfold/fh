@@ -1,4 +1,4 @@
-# `FH\Uninhabited`
+# Final class `FH\Uninhabited`
 
 Type with no inhabitants. Called `Uninhabited` instead of the more well-known
 `Void` because Hack prohibits classes to be called `Void`.

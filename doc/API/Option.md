@@ -1,4 +1,4 @@
-# `FH\Option<+T>`
+# Final class `FH\Option<+T>`
 
 Optional values. Use this instead of `?T` when you need `Option<Option<T>>`,
 `Option<?T>`, or `?mixed`.

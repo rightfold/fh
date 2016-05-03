@@ -1,4 +1,4 @@
-# `FH\Monoids`
+# Final class `FH\Monoids`
 
 ## Static methods
 

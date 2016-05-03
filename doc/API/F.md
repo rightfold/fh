@@ -1,4 +1,4 @@
-# `FH\F`
+# Final class `FH\F`
 
 Functions that operate on functions.
 

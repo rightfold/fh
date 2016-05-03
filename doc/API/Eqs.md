@@ -1,4 +1,4 @@
-# `FH\Eqs`
+# Final class `FH\Eqs`
 
 Equality comparers.
 

@@ -1,4 +1,4 @@
-# `FH\IO<+T>`
+# Final class `FH\IO<+T>`
 
 Functions that create, combine, and unsafely execute I/O actions.
 

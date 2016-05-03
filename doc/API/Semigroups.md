@@ -1,4 +1,4 @@
-# `FH\Semigroups`
+# Final class `FH\Semigroups`
 
 ## Static methods
 

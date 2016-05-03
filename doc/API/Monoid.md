@@ -1,4 +1,4 @@
-# `FH\Monoid<T> extends FH\Semigroup<T>`
+# Interface `FH\Monoid<T> extends FH\Semigroup<T>`
 
 ## Laws
 

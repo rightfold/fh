@@ -1,4 +1,4 @@
-# `FH\Semigroup<T>`
+# Interface `FH\Semigroup<T>`
 
 ## Laws
 

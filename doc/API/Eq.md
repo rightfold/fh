@@ -1,4 +1,4 @@
-# `FH\Eq<T>`
+# Interface `FH\Eq<T>`
 
 Interface for equality comparers.
 
