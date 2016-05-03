@@ -6,6 +6,9 @@ Optional values. Use this instead of `?T` when you need `Option<Option<T>>`,
 ## Static methods
 
 <dl>
+<dt><code>make(?T $x): Option&lt;T></code></dt>
+<dd>Return an option from a nullable value.</dd>
+
 <dt><code>none(): Option&lt;T></code></dt>
 <dd>Return the empty option.</dd>
 
@@ -17,6 +20,9 @@ not considered; this function always returns a non-empty option.</dd>
 ## Instance methods
 
 <dl>
+<dt><code>nullable(): ?T</code></dt>
+<dd>Turn an option into a nullable value.</dd>
+
 <dt><code>option&lt;TR>(TR $onNone, (function(T): TR) $onSome): TR</code></dt>
 <dd><!-- TODO: documentation --></dd>
 
