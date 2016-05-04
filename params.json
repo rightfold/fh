@@ -1,0 +1,6 @@
+{
+  "name": "Fh",
+  "tagline": "Functional Hack.",
+  "body": "![Functional Hack][1]\r\n\r\n_Functional Hack_ is a library that provides referentially transparent functions\r\nand immutable data structures to aid in functional programming.\r\n\r\n[1]: https://raw.githubusercontent.com/rightfold/fh/master/doc/Assets/Logo.png\r\n\r\n## Related projects\r\n\r\nSimilar projects for other programming languages exist:\r\n\r\n - [Cats][10]\r\n - [Fantasy Land][20]\r\n - [Functional Java][30]\r\n - [Scalaz][40]\r\n - [Swiftz][50]\r\n\r\n[10]: http://typelevel.org/cats/\r\n[20]: https://github.com/fantasyland/fantasy-land\r\n[30]: http://www.functionaljava.org/\r\n[40]: http://scalaz.github.io/scalaz/\r\n[50]: https://github.com/typelift/Swiftz\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
