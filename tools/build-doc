@@ -1,0 +1,19 @@
+#!/bin/bash -e
+(
+    rm -rf /tmp/fh-doc
+    cp -R doc /tmp/fh-doc
+    (
+        cd /tmp/fh-doc
+        stack build
+        stack exec site build
+        (
+            cd _site
+            git init
+            git checkout -b gh-pages
+            git add -A .
+            git commit -m 'Update site'
+            git remote add origin git@github.com:rightfold/fh.git
+            git push -f origin gh-pages
+        )
+    )
+)
