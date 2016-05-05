@@ -1,0 +1,18 @@
+namespace FH;
+
+class JSON is
+    new(field value: mixed);
+
+    static fn null  ():          JSON is new JSON(null);
+    static fn bool  (v: bool):   JSON is new JSON(v);
+    static fn num   (v: num):    JSON is new JSON(v);
+    static fn string(v: string): JSON is new JSON(v);
+
+    static fn array_(vs: ImmVector[JSON]): JSON is
+        new JSON(vs.map(fn(v) => v->value).toArray());
+
+    static fn object(vs: ImmMap[string, JSON]): JSON is
+        new JSON(cast[object](vs.map(fn(v) => v->value).toArray()));
+
+    fn encode(): string is json_encode(this->value);
+end;
