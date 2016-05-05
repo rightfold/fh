@@ -1,0 +1,39 @@
+namespace FH;
+
+class Option[+T] is
+    new(field present: bool, field value: T);
+
+    static fn none(): Option[T] is
+        new Option(false, unchecked(null));
+
+    static fn some(x: T): Option[T] is
+        new Option(true, x);
+
+    static fn make(x: ?T): Option[T] is
+        if x = null
+        then Option:none()
+        else Option:some(x);
+
+    fn option[TR](onNone: TR, onSome: fn(T) => TR): TR is
+        this.optionL(fn() => onNone, onSome);
+
+    fn optionL[TR](onNone: fn() => TR, onSome: fn(T) => TR): TR is
+        if this->present
+        then onSome(this->value)
+        else onNone();
+
+    fn nullable(): ?T is
+        if this->present
+        then this->value
+        else null;
+
+    fn map[TM](f: fn(T) => TM): Option[TM] is
+        if this->present
+        then Option:some(f(this->value))
+        else Option:none();
+
+    fn bind[TM](f: fn(T) => Option[TM]): Option[TM] is
+        if this->present
+        then f(this->value)
+        else Option:none();
+end;
