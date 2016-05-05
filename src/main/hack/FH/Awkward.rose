@@ -1,0 +1,21 @@
+namespace FH;
+
+class Awkward[+TError, +TOk] is
+    new(field isOk: bool, field value: mixed);
+
+    static fn error(error: TError): Awkward[TError, TOk] is
+        new Awkward(false, error);
+
+    static fn ok(ok: TOk): Awkward[TError, TOk] is
+        new Awkward(true, ok);
+
+    fn awkward[TR](onError: fn(TError) => TR, onOk: fn(TOk) => TR): TR is
+        if this->isOk
+        then onOk(unchecked(this->value))
+        else onError(unchecked(this->value));
+
+    fn map[TM](f: fn(TOk) => TM): Awkward[TError, TM] is
+        if this->isOk
+        then Awkward:ok(f(unchecked(this->value)))
+        else Awkward:error(unchecked(this->value));
+end;
