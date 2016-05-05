@@ -1,0 +1,7 @@
+namespace FH;
+
+module F is
+    fn id[T](): fn(T) => T is fn(x) => x;
+
+    fn constant[TI, TO](x: TO): fn(TI) => TO is fn(a) => x;
+end;
