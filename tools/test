@@ -1,5 +1,7 @@
 #!/bin/bash -e
 
+(cd ~/projects/rose && stack build)
+
 rm -rf build/{main,test}
 
 mkdir -p build/{main,test,intermediate/{main,test}}
@@ -9,6 +11,10 @@ mkdir -p build/{main,test,intermediate/{main,test}}
     for f in $(find . -name '*.hh' -o -name '*.hhi'); do
         mkdir -p "../build/intermediate/$(dirname "$f")"
         cat "$f" | ../tools/steps.pl > "../build/intermediate/$f"
+    done
+    for f in $(find . -name '*.rose'); do
+        mkdir -p "../build/intermediate/$(dirname "$f")"
+        cat "$f" | (cd ~/projects/rose && stack exec rosec) > "../build/intermediate/${f%.rose}.hh"
     done
 )
 

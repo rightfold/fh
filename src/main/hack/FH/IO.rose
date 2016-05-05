@@ -1,0 +1,17 @@
+namespace FH;
+
+class IO[+T] is
+    new(field action: fn() => T);
+
+    static fn pure(x: T): IO[T] is
+        new IO(fn() => x);
+
+    fn unsafePerform(): T is
+        this->action();
+
+    fn map[TM](f: fn(T) => TM): IO[TM] is
+        new IO(fn() => let x = this.unsafePerform() in f(x));
+
+    fn bind[TM](f: fn(T) => IO[TM]): IO[TM] is
+        new IO(fn() => let x = this.unsafePerform() in f(x).unsafePerform());
+end;
