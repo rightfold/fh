@@ -22,6 +22,10 @@ final class Eqs {
         });
     }
 
+    public static function mixedEq(): Eq<mixed> {
+        return self::make(($a, $b) ==> true);
+    }
+
     public static function intEq(): Eq<int> {
         return self::make(($a, $b) ==> $a === $b);
     }
