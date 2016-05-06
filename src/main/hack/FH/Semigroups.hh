@@ -8,6 +8,14 @@ final class Semigroups {
         return new Monoids_Make($append, /* UNSAFE_EXPR */ null);
     }
 
+    public static function boolAnd(): Semigroup<bool> {
+        return Monoids::boolAnd();
+    }
+
+    public static function boolOr(): Semigroup<bool> {
+        return Monoids::boolOr();
+    }
+
     public static function intAdd(): Semigroup<int> {
         return Monoids::intAdd();
     }

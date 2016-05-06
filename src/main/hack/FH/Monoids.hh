@@ -31,6 +31,14 @@ final class Monoids {
         return $r;
     }
 
+    public static function boolAnd(): Monoid<bool> {
+        return self::make(($a, $b) ==> $a && $b, true);
+    }
+
+    public static function boolOr(): Monoid<bool> {
+        return self::make(($a, $b) ==> $a || $b, false);
+    }
+
     public static function intAdd(): Monoid<int> {
         return self::make(($a, $b) ==> $a + $b, 0);
     }
