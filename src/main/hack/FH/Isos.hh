@@ -25,4 +25,15 @@ final class Isos {
     ): Iso<TA, TB> {
         return new Isos_Make($a2b, $b2a);
     }
+
+    public static function swap<TA, TB>(Iso<TA, TB> $i): Iso<TB, TA> {
+        return self::make(inst_meth($i, 'b2a'), inst_meth($i, 'a2b'));
+    }
+
+    public static function guaranteedSuccess<T>(): Iso<Awkward<Uninhabited, T>, T> {
+        return self::make(
+            function($a) { return $a->awkward($u ==> $u->absurd(), F::id()); },
+            function($b) { return Awkward::ok($b); }
+        );
+    }
 }
