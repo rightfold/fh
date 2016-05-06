@@ -8,6 +8,10 @@ final class Semigroups {
         return new Monoids_Make($append, /* UNSAFE_EXPR */ null);
     }
 
+    public static function mixed(): Semigroup<mixed> {
+        return Monoids::mixed();
+    }
+
     public static function boolAnd(): Semigroup<bool> {
         return Monoids::boolAnd();
     }

@@ -31,6 +31,10 @@ final class Monoids {
         return $r;
     }
 
+    public static function mixed(): Monoid<mixed> {
+        return self::make(($a, $b) ==> null, null);
+    }
+
     public static function boolAnd(): Monoid<bool> {
         return self::make(($a, $b) ==> $a && $b, true);
     }
