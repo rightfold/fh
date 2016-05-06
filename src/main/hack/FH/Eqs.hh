@@ -30,24 +30,18 @@ final class Eqs {
         return self::make(($a, $b) ==> $a === $b);
     }
 
-    public static function arrayEq<T>(Eq<T> $elementEq): Eq<array<T>> {
+    public static function vectorEq<T>(Eq<T> $elementEq): Eq<ImmVector<T>> {
         return self::make(function($a, $b) use($elementEq) {
-            if (count($a) !== count($b)) {
+            if ($a->count() !== $b->count()) {
                 return false;
             }
-            for ($i = 0; $i < count($a); ++$i) {
+            $n = $a->count();
+            for ($i = 0; $i < $n; ++$i) {
                 if (!$elementEq->eq($a[$i], $b[$i])) {
                     return false;
                 }
             }
             return true;
-        });
-    }
-
-    public static function vectorEq<T>(Eq<T> $elementEq): Eq<ImmVector<T>> {
-        $arrayEq = self::arrayEq($elementEq);
-        return self::make(function($a, $b) use($arrayEq) {
-            return $arrayEq->eq($a->toArray(), $b->toArray());
         });
     }
 }

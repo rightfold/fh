@@ -20,10 +20,6 @@ final class Semigroups {
         return Monoids::stringConcat();
     }
 
-    public static function arrayConcat<T>(): Semigroup<array<T>> {
-        return Monoids::arrayConcat();
-    }
-
     public static function vectorConcat<T>(): Semigroup<ImmVector<T>> {
         return Monoids::vectorConcat();
     }
