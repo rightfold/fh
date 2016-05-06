@@ -1,7 +1,7 @@
 ![Functional Hack][1]
 
-_Functional Hack_ is a library that provides referentially transparent functions
-and immutable data structures to aid in functional programming.
+_Functional Hack_ is a library that provides pure functions and immutable data
+structures to aid in functional programming.
 
 [1]: https://raw.githubusercontent.com/rightfold/fh/master/doc/Assets/Logo.png
 
