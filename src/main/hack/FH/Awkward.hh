@@ -1,7 +1,7 @@
 <?hh // strict
 namespace FH;
 
-final class Awkward<TError, TOk> {
+final class Awkward<TError, +TOk> {
     private function __construct(
         private bool $isOk,
         private mixed $value
