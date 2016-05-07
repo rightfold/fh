@@ -1,7 +1,7 @@
 <?hh // strict
 namespace FH;
 
-final class Eqs_Make<T> implements Eq<T> {
+final class Eqs_Make<-T> implements Eq<T> {
     public function __construct(private (function(T, T): bool) $eq) { }
 
     public function eq(T $a, T $b): bool {
