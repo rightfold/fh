@@ -2,17 +2,13 @@
 namespace FH;
 use PHPUnit_Framework_TestCase;
 
-class IOTest_Ref<T> {
-    public function __construct(public T $value) { }
-}
-
 class IOTest extends PHPUnit_Framework_TestCase {
     public function testPure(): void {
         $this->assertSame(1, IO::pure(1)->unsafePerform());
     }
 
     public function testMap(): void {
-        $called = new IOTest_Ref(0);
+        $called = (object)['value' => 0];
         $io = new IO(function() use($called) {
             $called->value += 1;
             return 1;
@@ -22,7 +18,7 @@ class IOTest extends PHPUnit_Framework_TestCase {
     }
 
     public function testBind(): void {
-        $called = new IOTest_Ref(0);
+        $called = (object)['value' => 0];
         $io1 = new IO(function() use($called) {
             $called->value += 1;
             return 1;
