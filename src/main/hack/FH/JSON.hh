@@ -1,5 +1,7 @@
 <?hh // strict
 namespace FH;
+use DateTime;
+use DateTimeInterface;
 
 final class JSON {
     private function __construct(private mixed $value) { }
@@ -8,6 +10,10 @@ final class JSON {
     public static function bool  (bool $v):   JSON { return new JSON($v); }
     public static function num   (num $v):    JSON { return new JSON($v); }
     public static function string(string $v): JSON { return new JSON($v); }
+
+    public static function dateTime(DateTimeInterface $v): JSON {
+        return new JSON($v->format(DateTime::ISO8601));
+    }
 
     public static function array_(ImmVector<JSON> $vs): JSON {
         return new JSON($vs->map(function($v) { return $v->value; })->toArray());
